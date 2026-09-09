@@ -48,37 +48,6 @@ Live demo: [YOUR_GITHUB_PAGES_URL]
 - Vanilla JavaScript (ES6+)
 - LocalStorage for theme + remember me
 
-## How to run locally
-
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-   cd YOUR_REPO_NAME
-   ```
-2. Open `index.html` in your browser.
-
-No build tools or dependencies required.
-
-## Deployment (GitHub Pages)
-
-1. Create a new repository on GitHub (e.g. `secure-form-validator`).
-2. Push your code:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit: secure form validator"
-   git branch -M main
-   git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-   git push -u origin main
-   ```
-3. Enable GitHub Pages:
-   - Go to repo **Settings → Pages**
-   - Under **Source**, select `main` branch and `/ (root)`
-   - Save
-4. Your site will be available at:
-   - `https://YOUR_USERNAME.github.io/YOUR_REPO_NAME/`
-
-Update the “Live demo” link at the top of this README with that URL.
 
 ## Security notes
 
