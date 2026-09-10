@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <title>Secure Form Validator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <button id="themeToggle" aria-label="Toggle theme">🌙</button>
+
+  <main class="container">
+    <h1>Create Account</h1>
+
+    <div class="progress" aria-hidden="true">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <ol class="steps" aria-label="Form steps">
+      <li class="step active" data-step="1">Account</li>
+      <li class="step" data-step="2">Profile</li>
+      <li class="step" data-step="3">Preferences</li>
+    </ol>
+
+    <form id="signupForm" novalidate aria-live="polite">
+      <!-- STEP 1: Account -->
+      <fieldset class="form-step" data-step="1">
+        <legend class="visually-hidden">Account details</legend>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="you@example.com"
+            required
+            aria-describedby="emailError"
+          />
+          <small id="emailError" class="error" role="alert"></small>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="password-row">
+            <div class="input-with-toggle">
+              <input
+                id="password"
+                name="password"
+                type="password"
+                placeholder="Min 8 chars, 1 upper, 1 number, 1 symbol"
+                required
+                minlength="8"
+                aria-describedby="passwordError passwordHelp"
+              />
+              <button
+                type="button"
+                class="toggle-visibility"
+                aria-label="Show password"
+                aria-controls="password"
+                data-target="password"
+              >
+                👁️
+              </button>
+            </div>
+            <button type="button" id="genPassBtn" aria-label="Generate strong password">
+              Generate
+            </button>
+          </div>
+          <small id="passwordHelp" class="help">
+            Use 8+ chars with upper, lower, number, and symbol.
+          </small>
+          <small id="passwordError" class="error" role="alert"></small>
+          <div class="strength-meter" aria-hidden="true">
+            <div class="strength-bar" id="strengthBar"></div>
+          </div>
+          <small id="strengthText" class="help"></small>
+        </div>
+
+        <div class="field">
+          <label for="confirmPassword">Confirm password</label>
+          <div class="input-with-toggle">
+            <input
+              id="confirmPassword"
+              name="confirmPassword"
+              type="password"
+              required
+              aria-describedby="confirmError"
+            />
+            <button
+              type="button"
+              class="toggle-visibility"
+              aria-label="Show password"
+              aria-controls="confirmPassword"
+              data-target="confirmPassword"
+            >
+              👁️
+            </button>
+          </div>
+          <small id="confirmError" class="error" role="alert"></small>
+        </div>
+
+        <div class="field checkbox-field">
+          <label for="rememberMe">
+            <input id="rememberMe" name="rememberMe" type="checkbox" />
+            Remember my email and username on this device
+          </label>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn-next" id="toStep2">Next</button>
+        </div>
+      </fieldset>
+
+      <!-- STEP 2: Profile -->
+      <fieldset class="form-step" data-step="2" hidden>
+        <legend class="visually-hidden">Profile details</legend>
+
+        <div class="field">
+          <label for="fullName">Full name</label>
+          <input
+            id="fullName"
+            name="fullName"
+            type="text"
+            placeholder="Ada Lovelace"
+            required
+            aria-describedby="fullNameError"
+          />
+          <small id="fullNameError" class="error" role="alert"></small>
+        </div>
+
+        <div class="field">
+          <label for="username">Username (optional)</label>
+          <input
+            id="username"
+            name="username"
+            type="text"
+            placeholder="ada"
+            aria-describedby="usernameError"
+          />
+          <small id="usernameError" class="error" role="alert"></small>
+        </div>
+
+        <!-- Honeypot -->
+        <div class="field honeypot" aria-hidden="true">
+          <label for="website">Website</label>
+          <input
+            id="website"
+            name="website"
+            type="text"
+            tabindex="-1"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn-prev" id="backToStep1">Back</button>
+          <button type="button" class="btn-next" id="toStep3">Next</button>
+        </div>
+      </fieldset>
+
+      <!-- STEP 3: Preferences -->
+      <fieldset class="form-step" data-step="3" hidden>
+        <legend class="visually-hidden">Preferences</legend>
+
+        <div class="field">
+          <label for="newsletter">
+            <input id="newsletter" name="newsletter" type="checkbox" />
+            Subscribe to security tips newsletter
+          </label>
+        </div>
+
+        <div class="field">
+          <label for="terms">
+            <input id="terms" name="terms" type="checkbox" required aria-describedby="termsError" />
+            I agree to the terms and privacy policy
+          </label>
+          <small id="termsError" class="error" role="alert"></small>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn-prev" id="backToStep2">Back</button>
+          <button type="submit" id="submitBtn">Create account</button>
+        </div>
+
+        <p class="note">
+          This is a client-side demo. In production, validate and sanitize all
+          inputs on the server too.
+        </p>
+      </fieldset>
+
+      <div id="formStatus" class="visually-hidden" aria-live="status"></div>
+    </form>
+
+    <div id="cooldownBox" class="cooldown" hidden>
+      Too many attempts. Please wait <span id="cooldownTimer">30</span>s before trying again.
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
