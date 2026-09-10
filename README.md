@@ -2,7 +2,7 @@
 
 A secure‑focused, multi‑step signup form built with vanilla HTML, CSS, and JavaScript. Designed to demonstrate strong client‑side validation, accessibility, and security‑aware UI patterns.
 
-Live demo: [YOUR_GITHUB_PAGES_URL]
+Live demo: [View the live project](https://omoleyeabigail82-dot.github.io/Fom-Validator/)
 
 ## Features
 
