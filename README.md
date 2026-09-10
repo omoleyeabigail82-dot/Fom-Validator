@@ -62,7 +62,4 @@ Live demo: [View the live project](https://omoleyeabigail82-dot.github.io/Fom-Va
 - Add more a11y tests (e.g., with screen readers)  
 - Integrate into a larger portfolio or component library
 
-## License
-
-MIT
 
